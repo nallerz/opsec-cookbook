@@ -15,3 +15,14 @@ At this time, this scope is not limited to any one use case, however most conten
 *Contributors are welcome [and needed!] from many areas of domain expertise.*
 
 Check out some of the [guiding principles](https://github.com/nallerz/opsec-cookbook/blob/main/CONTRIBUTING.md) for the project if you would like to learn more.
+
+## Content
+There are two main types of resources here to support the community. 
+
+### 1. The Library
+The Library is a knowledge base for opsec theory, best practices, general threat intelligence, and methods/techniques/countermeasures/features. The Library is divided into volumes on different topics. Check out the [table of contents](https://github.com/nallerz/opsec-cookbook/blob/main/library/library_readme.md#table-of-contents) for more details.
+
+
+### 2. Toolkits
+Toolkits can be thought of as loadouts or builds that offer various features discussed in the library.
+Toolkits are intended to package related features/solutions/countermeasures into user friendly kits that don't require deep multi-domain knowledge)
