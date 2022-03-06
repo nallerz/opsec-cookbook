@@ -52,3 +52,9 @@ Each volume below corresponds to a directory of contents on the related topic.
   - Mumble
 
 ## Volume 3: Protocols & Procedures
+
+## Additional Resources
+- [S2U website (Tor browser required)](http://wx7ssrp5gfuymzmdyng7tfkce7ilzslz5vij7332dv2hmzim26oztvqd.onion/)
+- [S2U YouTube channel](https://youtube.com/c/S2Underground)
+- [S2U reading list](https://www.goodreads.com/review/list/133747963-s2-actual)
+
