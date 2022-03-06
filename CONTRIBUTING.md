@@ -1,7 +1,7 @@
 # Contributing
 Contributors Welcome! Please check out the guiding principles for the project below. Feel free to suggest changes here as well.
 
-## Library principles:
+## Library Principles:
 1. **Hierarchy of information**
 - The enemy of good information is bad organization
 - Topics will go wide and deep, constantly evaluate how contributed information fits into the bigger picture
