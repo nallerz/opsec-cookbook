@@ -47,7 +47,7 @@ This kit is intended to provide users with a full stack solution and instruction
 **Instructions:**
 1. (See 1a instructions...)
 2. Sign up for paid account
-3. (Optional) avoid paying by implementing solution 2a and then feeding data to sites (most will then give you enhanced access for free)
+3. (Optional) avoid paying by implementing [solution 2a](https://github.com/nallerz/opsec-cookbook/edit/main/toolkits/adsb_observation/adsb_observation_readme.md#level-2a-collectingmonitoring-live-adsb-transmissions) and then feeding data to sites (most will then give you enhanced access for free)
 
 ### level 1c: web-data persistence
 **Description:** web-scraping/persisting free online data for analysis of comprehensive history
@@ -89,6 +89,7 @@ This kit is intended to provide users with a full stack solution and instruction
 - [X] Rtl-sdr antenna
 - [X] Raspberry pi
 - [X] Software installation/configuration
+
 **Instructions:**
 1. Install rpi operating system (or skip to step 2a)
    - https://www.raspberrypi.com/software/
