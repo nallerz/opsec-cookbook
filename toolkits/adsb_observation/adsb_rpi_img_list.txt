@@ -1,0 +1,4 @@
+//rpi ADSB pre-baked image list
+https://www.adsbexchange.com/how-to-feed/adsbx-custom-pi-image/
+https://www.flightradar24.com/build-your-own
+https://flightaware.com/adsb/piaware/build/US
