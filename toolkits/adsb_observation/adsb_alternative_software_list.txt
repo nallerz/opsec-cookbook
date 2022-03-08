@@ -1,0 +1,19 @@
+//Primary collector software (interfacing with receiver):
+  //readsb - more cutting edge fork of dump1090, more active development
+    https://github.com/wiedehopf/readsb
+    https://github.com/wiedehopf/adsb-scripts
+
+  //Dump1090-fa - been around, will be around for a while
+    https://github.com/adsbxchange/dump1090-fa
+
+//Improved viz software
+  https://github.com/wiedehopf/tar1090  
+  https://github.com/wiedehopf/graphs1090
+
+//Dockerized options (recommended if familiar with docker)
+  //Good all around install, easy to feed sites and persist data. Very flexible.
+    https://hub.docker.com/r/mikenye/readsb-protobuf
+
+  //Good/simple flightradar24 setups
+    https://hub.docker.com/r/mikenye/fr24feed
+    https://hub.docker.com/r/marcelmaatkamp/flightradar24-feeder
