@@ -94,14 +94,15 @@ This kit is intended to provide users with a full stack solution and instruction
    - https://www.raspberrypi.com/software/
 
 2. Install ADSB software
-   - Option a: use pre-baked rpi image (easiest overal)
+   - **Option a:** use pre-baked rpi image (easiest overal)
      1. Pick image from [adsb_rpi_img_list.txt](./adsb_rpi_img_list.txt)
      2. Write image to SD card (https://www.raspberrypi.com/documentation/computers/getting-started.html)
      3. Follow configuration instructions provided by the image provider
-        -e.g.adsbexchange.com: https://www.adsbexchange.com/how-to-feed/adsbx-custom-pi-image/
-        -e.g.flightradar24.com: https://www.flightradar24.com/build-your-own
-   - Option c: install ADSB monitoring software from alternative project of choice. See [adsb_alternative_software_list.txt](./adsb_alternative_software_list.txt)
-   - Option d: dockerized install (cleanest if familiar with docker). See [adsb_alternative_software_list.txt](./adsb_alternative_software_list.txt)
+        - e.g.adsbexchange.com: https://www.adsbexchange.com/how-to-feed/adsbx-custom-pi-image/
+        - e.g.flightradar24.com: https://www.flightradar24.com/build-your-own
+   - **Option b:** install readsb using easy script: https://github.com/wiedehopf/adsb-scripts/wiki/Automatic-installation-for-readsb#installation
+   - **Option c:** install ADSB monitoring software from alternative project of choice. See [adsb_alternative_software_list.txt](./adsb_alternative_software_list.txt)
+   - **Option d:** dockerized install (cleanest if familiar with docker). See [adsb_alternative_software_list.txt](./adsb_alternative_software_list.txt)
 
 ### level 2b: collecting & persisting long term ADSB data for analysis
 **Description:** using hardware (sdr receiver + raspberry pi) to monitor live radio transmissions from extended line of sight aircraft.
