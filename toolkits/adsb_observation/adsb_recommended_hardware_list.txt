@@ -1,0 +1,15 @@
+//Recommended hardware list
+
+1. Raspberry Pi 3 / 4 / Zero W
+2. Power supply for the Raspberry Pi
+   - 5v 2.5 Amps power supply recommended
+3. Micro SD Card (size: 8 GB or larger)
+4. rtl-sdr USB receiver    
+5. 1090 MHz Antenna
+   - An indoor antenna can be purchased to start. Be sure the antenna has same type of connector as receiver.
+   - If you use a telescoping mast antenna be sure to collapse it to a quarter wavelength of 1090 MHz (6.9 cm) to maximize reception.
+[optional] Raspberry Pi Case
+[optional] Ethernet Cable
+[optional] 1090Mhz filter (may help performance in environments with lots of rf interference)
+
+More info: https://github.com/wiedehopf/adsb-wiki/wiki/Useful-items-for-purchase
