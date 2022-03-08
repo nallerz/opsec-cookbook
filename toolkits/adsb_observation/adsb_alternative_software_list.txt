@@ -10,6 +10,11 @@
   https://github.com/wiedehopf/tar1090  
   https://github.com/wiedehopf/graphs1090
 
+//Data persistence (note - docker)
+  https://hub.docker.com/r/mikenye/readsb-protobuf
+  +
+  https://hub.docker.com/_/influxdb/
+
 //Dockerized options (recommended if familiar with docker)
   //Good all around install, easy to feed sites and persist data. Very flexible.
     https://hub.docker.com/r/mikenye/readsb-protobuf
