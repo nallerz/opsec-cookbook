@@ -1,0 +1,51 @@
+##### setup environemnt ######
+#load virtual environment from initial setup
+source venv/bin/activate
+
+##### scan for device connected ######
+esptool chip_id
+
+
+##### flash device #####
+./device-update.sh -f [firmware file here! e.g: firmware-tbeam-1.2.52.b63802c.bin]
+
+# factory reset, caution... (and not neccessary w/fresh firmware)
+#meshtastic --set factory_reset true
+
+##### configure channel(s) #####
+#this is done only once on first device... after that these settings are embedded in the channel url for other devices
+
+meshtastic --set region US
+meshtastic --ch-set id 1234 --ch-index 0
+meshtastic --ch-set name [your channel name here!] --ch-index 0
+meshtastic --ch-set modem_config [distnace/speed setting here! e.g.: Bw250Cr47Sf1024] --ch-index 0
+
+#more info:
+#https://meshtastic.org/docs/settings/channel
+
+#create new random encryption key (first device/node only!)
+meshtastic --ch-set psk random --ch-index 0
+
+##if you want to remotely manage device(s), you can add an admin channel (only neccessary one time! same admin channel can be shared amonst multiple devices.)
+meshtastic --ch-add admin
+
+#get primary and/or admin url for sharing with additional devices:
+meshtastic --info
+
+##### configure device #####
+##if multiple devies connected, use the following argument to specify the usb/serial port: -port /dev/ttyACM0
+
+#set device name
+meshtastic --set-owner [your device name here!]
+
+##client units example
+meshtastic --set gps_operation GpsOpMobile --set gps_attempt_time 60 --set position_broadcast_smart true --set gps_update_interval 0 --set position_broadcast_secs 300 --set location_share LocEnabled --pos-fields POS_ALTITUDE POS_ALT_MSL POS_BATTERY POS_TIMESTAMP POS_SATINVIEW
+meshtastic --seturl [your private url]
+
+##repeater units example
+meshtastic --set is_router true --set gps_update_interval 21600 --pos-fields POS_ALTITUDE POS_ALT_MSL POS_BATTERY POS_TIMESTAMP POS_SATINVIEW
+meshtastic --seturl [your private url]
+
+
+##### monitor device on serial console #####
+screen /dev/ttyACM0 921600
