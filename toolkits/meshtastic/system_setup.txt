@@ -1,0 +1,21 @@
+##### update/install dependences #####
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+sudo apt-get install -y python3-pip python3-venv
+
+pip3 install --upgrade esptool
+pip3 install --upgrade pip
+pip3 install meshtastic-flasher
+
+##### setup environemnt ######
+sudo usermod -a -G dialout nallerz
+
+# if the following command fails, it might tell you what package to install
+python3 -m venv venv
+# activate the python virtual environment
+source venv/bin/activate
+
+
+##### scan for device connected ######
+esptool chip_id
