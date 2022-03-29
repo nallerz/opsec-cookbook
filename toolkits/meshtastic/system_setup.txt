@@ -9,7 +9,7 @@ pip3 install --upgrade pip
 pip3 install meshtastic-flasher
 
 ##### setup environemnt ######
-sudo usermod -a -G dialout nallerz
+sudo usermod -a -G dialout [your username]
 
 # if the following command fails, it might tell you what package to install
 python3 -m venv venv
