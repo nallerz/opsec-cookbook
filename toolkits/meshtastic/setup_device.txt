@@ -7,45 +7,125 @@ esptool chip_id
 
 
 ##### flash device #####
-./device-update.sh -f [firmware file here! e.g: firmware-tbeam-1.2.52.b63802c.bin]
+#make sure you are in firmware directory
 
-# factory reset, caution... (and not neccessary w/fresh firmware)
-#meshtastic --set factory_reset true
+# flash/factory reset, caution...
+#e.g.: ./device-install.sh -f [firmware file here! e.g: firmware-tbeam-1.2.52.b63802c.bin]
+
+#update firmware, keep settings:
+#e.g.: ./device-update.sh -f [firmware file here! e.g: firmware-tbeam-1.2.52.b63802c-update.bin]
+
 
 ##### configure channel(s) #####
 #this is done only once on first device... after that these settings are embedded in the channel url for other devices
 
-meshtastic --set region US
-meshtastic --ch-set id 1234 --ch-index 0
-meshtastic --ch-set name [your channel name here!] --ch-index 0
-meshtastic --ch-set modem_config [distnace/speed setting here! e.g.: Bw250Cr47Sf1024] --ch-index 0
+#create new random encryption key (first device/node only!)
+meshtastic \
+--set lora.region US \
+--ch-set name primary \
+--ch-set psk random \
+--ch-set downlink_enabled false \
+--ch-set uplink_enabled false \
+--ch-index 0 \
+--info
+
+#if you want to remotely manage device(s), you can add an admin channel below (recommended), otherwise comment and newline the below out \
+meshtastic --ch-add admin --info
+
+#if you need it later, you can get primary and/or admin url for sharing with additional devices:
+meshtastic --info
 
 #more info:
 #https://meshtastic.org/docs/settings/channel
 
-#create new random encryption key (first device/node only!)
-meshtastic --ch-set psk random --ch-index 0
 
-##if you want to remotely manage device(s), you can add an admin channel (only neccessary one time! same admin channel can be shared amonst multiple devices.)
-meshtastic --ch-add admin
+##### example client config #####
+meshtastic \
+#--set-owner '<my node name>' \
+#--set-owner-short '<my node short name>' \
+\
+--set lora.region US \
+--set lora.modem_preset LONG_FAST \
+--set lora.tx_enabled true \
+--set bluetooth.enabled	true \
+--set bluetooth.mode FIXED_PIN \
+--set bluetooth.fixedPin <my pin> \
+\
+--set device.role CLIENT \
+--set device.rebroadcast_mode LOCAL_ONLY \
+--set device.serial_enabled	true \
+--set device.is_managed	false \
+\
+--set network.wifi_enabled false \
+--set network.wifi_ssid	"" \
+--set network.wifi_psk	"" \
+\
+--set position.gps_enabled true \
+--set position.gps_update_interval 30 \
+--set position.position_broadcast_secs 900 \
+--set position.gps_attempt_time 0 \
+--set position.position_broadcast_smart_enabled	true \
+\
+--set mqtt.enabled false \
+#--set mqtt.address	[host ip] \
+#--set mqtt.username [mqtt username] \	
+#--set mqtt.password	 [mqtt pwd] \
+#--set mqtt.root [root topic] 
 
-#get primary and/or admin url for sharing with additional devices:
-meshtastic --info
+meshtastic --pos-fields TIMESTAMP SATINVIEW	ALTITUDE ALTITUDE_MSL HEADING SPEED
 
-##### configure device #####
+
+##### backup config to yaml file #####
 ##if multiple devies connected, use the following argument to specify the usb/serial port: -port /dev/ttyACM0
+meshtastic --export-config > client_base_config.yaml
 
-#set device name
-meshtastic --set-owner [your device name here!]
 
-##client units example
-meshtastic --set gps_operation GpsOpMobile --set gps_attempt_time 60 --set position_broadcast_smart true --set gps_update_interval 0 --set position_broadcast_secs 300 --set location_share LocEnabled --pos-fields POS_ALTITUDE POS_ALT_MSL POS_BATTERY POS_TIMESTAMP POS_SATINVIEW
+##### provision/configure a client node with channel from config file ##### 
+meshtastic --configure client_base_config.yaml |\
+meshtastic --set-owner '<node name>' --set-owner-short '<short name>'
+
+
+##### example repeater config #####
+meshtastic \
+\
+--set lora.region US \
+--set lora.modem_preset LONG_FAST \
+--set lora.tx_enabled true \
+--set bluetooth.enabled	false \
+\
+--set device.role ROUTER \
+--set device.rebroadcast_mode LOCAL_ONLY \
+--set device.serial_enabled	true \
+--set device.is_managed	false \
+\
+--set network.wifi_enabled false \
+--set network.wifi_ssid	"" \
+--set network.wifi_psk	"" \
+\
+--set position.gps_enabled true \
+--set position.gps_update_interval 21600 \
+--set position.position_broadcast_secs 900 \
+--set position.gps_attempt_time 0 \
+--set position.position_broadcast_smart_enabled	false \
+\
+--set mqtt.enabled false
+
+#set position fields
+meshtastic --pos-fields TIMESTAMP SATINVIEW	ALTITUDE ALTITUDE_MSL HEADING SPEED
+
+
+##### backup config to yaml file #####
+##if multiple devies connected, use the following argument to specify the usb/serial port: -port /dev/ttyACM0
+meshtastic --export-config > repeater_base_config.yaml
+
+
+##### provision/configure a repeater node with channel from config file ##### 
+meshtastic --configure repeater_base_config.yaml |\
+meshtastic --set-owner '<node name>' --set-owner-short '<short name>'
+
+##########OTHER USEFUL STUFF##########
+#manually set meshtastic channel url for a unit (not needed if it was 
 meshtastic --seturl [your private url]
 
-##repeater units example
-meshtastic --set is_router true --set gps_update_interval 21600 --pos-fields POS_ALTITUDE POS_ALT_MSL POS_BATTERY POS_TIMESTAMP POS_SATINVIEW
-meshtastic --seturl [your private url]
-
-
-##### monitor device on serial console #####
+#monitor device on serial console
 screen /dev/ttyACM0 921600
